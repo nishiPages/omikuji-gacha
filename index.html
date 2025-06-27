@@ -2,28 +2,93 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>おみくじガチャ</title>
+  <title>LINE風おみくじ</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
-    .result { font-size: 2em; margin: 30px 0; }
-    button { font-size: 1.2em; padding: 10px 20px; }
+    body {
+      background: #e5e5e5;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .chat-box {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .bubble {
+      background: #dcf8c6;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 1.1em;
+      position: relative;
+    }
+
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #dcf8c6 transparent;
+      display: block;
+      width: 0;
+    }
+
+    .button-wrap {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    button {
+      background-color: #00c300;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 30px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #00a000;
+    }
+
+    .caption {
+      text-align: center;
+      color: #777;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <h1>今日の運勢は…</h1>
-  <p class="result" id="result">？？？</p>
-  <button onclick="location.href='https://www.e-kokusei.go.jp/'">国勢調査に回答する</button>
+  <div class="chat-box">
+    <div class="bubble" id="result">おみくじを開封中...</div>
+    <div class="button-wrap">
+      <button onclick="location.href='https://www.e-kokusei.go.jp/'">
+        国勢調査に回答する
+      </button>
+    </div>
+    <div class="caption">あなたの“ひと声”が、みんなの暮らしをつくります。</div>
+  </div>
 
   <script>
     const results = [
-      "🎉 大吉！未来が開ける！",
-      "😊 中吉：いい感じの予感！",
-      "😐 小吉：今日は平和に。",
-      "😅 凶：でも大丈夫。あなたの声が未来を変える！"
+      "📱 大吉！いいニュースが届きそう！",
+      "🌱 中吉：今日の一歩が明日につながる。",
+      "💬 小吉：だれかの言葉が、あなたを動かすかも。",
+      "📶 凶：でも大丈夫。つながっているから。"
     ];
-    document.getElementById("result").innerText =
-      results[Math.floor(Math.random() * results.length)];
+    const randomIndex = Math.floor(Math.random() * results.length);
+    document.getElementById("result").innerText = results[randomIndex];
   </script>
 </body>
 </html>
-</details>

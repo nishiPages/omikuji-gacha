@@ -2,82 +2,74 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>今日のひとこと占い</title>
   <style>
     body {
-      background: #e5e5e5;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: sans-serif;
+      background-color: #eee;
       margin: 0;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .chat-box {
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px 20px;
       max-width: 400px;
-      margin: 40px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-
-    .bubble {
-      background: #dcf8c6;
-      border-radius: 15px;
-      padding: 15px;
-      margin: 10px 0;
-      font-size: 1.1em;
-      position: relative;
-      white-space: pre-wrap;
-    }
-
-    .bubble::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 20px;
-      border-width: 10px 10px 0;
-      border-style: solid;
-      border-color: #dcf8c6 transparent;
-      display: block;
-      width: 0;
-    }
-
-    .button-wrap {
+      width: 90%;
       text-align: center;
-      margin-top: 30px;
+    }
+
+    .result {
+      background-color: #d9fdd3; /* LINE風グリーン */
+      color: #000;
+      font-size: 1.3em;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 80px;
+      line-height: 1.6;
     }
 
     button {
       background-color: #00c300;
       color: white;
+      font-size: 1.2em;
+      padding: 12px 24px;
       border: none;
-      border-radius: 20px;
-      padding: 12px 30px;
-      font-size: 1em;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #00a000;
     }
 
     .caption {
-      text-align: center;
-      color: #777;
-      font-size: 0.9em;
       margin-top: 20px;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      .result {
+        font-size: 1.5em;
+        padding: 24px;
+      }
+
+      button {
+        font-size: 1.2em;
+        padding: 14px 28px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="chat-box">
-    <div class="bubble" id="result">おみくじを開封中...</div>
-    <div class="button-wrap">
-      <button onclick="location.href='https://www.e-kokusei.go.jp/'">
-        国勢調査に回答する
-      </button>
-    </div>
+  <div class="container">
+    <h1>今日のひとこと占い</h1>
+    <div id="result" class="result">...</div>
+    <button onclick="location.href='https://www.e-kokusei.go.jp/'">国勢調査に回答する</button>
     <div class="caption">あなたの“ひと声”が、みんなの暮らしをつくります。</div>
   </div>
 
@@ -90,14 +82,14 @@
       { text: "気づかれへん頑張り、届いてるで。", rank: "😊 小吉" },
       { text: "たまには、“ま、いっか”って言お。", rank: "😐 平" },
       { text: "無理して笑わなくても、ええよ。", rank: "😐 平" },
-      { text: "今日はちょっとだけ休もか。", rank: "🌿 たねまき" },
-      { text: "やらかしてもええやん、明日があるし。", rank: "🌿 たねまき" },
-      { text: "ちょっとだけ未来に期待しても、バチ当たらんで。", rank: "🌿 たねまき" }
+      { text: "今日はちょっとだけ休もか。", rank: "🌱 たねまき" },
+      { text: "やらかしてもええやん、明日があるし。", rank: "🌱 たねまき" },
+      { text: "ちょっとだけ未来に期待しても、バチ当たらんで。", rank: "🌱 たねまき" }
     ];
 
     const randomIndex = Math.floor(Math.random() * results.length);
     const result = results[randomIndex];
-    document.getElementById("result").innerText = `${result.rank} ${result.text}`;
+    document.getElementById("result").innerText = `${result.rank}\n${result.text}`;
   </script>
 </body>
 </html>

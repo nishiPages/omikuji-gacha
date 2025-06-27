@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>LINE風おみくじ</title>
+  <title>今日のひとこと占い</title>
   <style>
     body {
       background: #e5e5e5;
@@ -27,6 +27,7 @@
       margin: 10px 0;
       font-size: 1.1em;
       position: relative;
+      white-space: pre-wrap;
     }
 
     .bubble::after {
@@ -81,20 +82,22 @@
   </div>
 
   <script>
- const results = [
-  { text: "なんか今日は、うまくいきそうな気がする。", rank: "🎉 大吉" },
-  { text: "あなたの“ちゃんと”が、未来をつくってる。", rank: "🎉 大吉" },
-  { text: "そのペース、そのままでいいやん。", rank: "😊 小吉" },
-  { text: "ちゃんと見てくれてる人、どこかにいるよ。", rank: "😊 小吉" },
-  { text: "気づかれへん頑張り、届いてるで。", rank: "😊 小吉" },
-  { text: "たまには、“ま、いっか”って言お。", rank: "😐 平" },
-  { text: "無理して笑わなくても、ええよ。", rank: "😐 平" },
-  { text: "今日はちょっとだけ休もか。", rank: "🌿 たねまき" },
-  { text: "やらかしてもええやん、明日があるし。", rank: "🌿 たねまき" },
-  { text: "ちょっとだけ未来に期待しても、バチ当たらんで。", rank: "🌿 たねまき" }
-];
+    const results = [
+      { text: "なんか今日は、うまくいきそうな気がする。", rank: "🎉 大吉" },
+      { text: "あなたの“ちゃんと”が、未来をつくってる。", rank: "🎉 大吉" },
+      { text: "そのペース、そのままでいいやん。", rank: "😊 小吉" },
+      { text: "ちゃんと見てくれてる人、どこかにいるよ。", rank: "😊 小吉" },
+      { text: "気づかれへん頑張り、届いてるで。", rank: "😊 小吉" },
+      { text: "たまには、“ま、いっか”って言お。", rank: "😐 平" },
+      { text: "無理して笑わなくても、ええよ。", rank: "😐 平" },
+      { text: "今日はちょっとだけ休もか。", rank: "🌿 たねまき" },
+      { text: "やらかしてもええやん、明日があるし。", rank: "🌿 たねまき" },
+      { text: "ちょっとだけ未来に期待しても、バチ当たらんで。", rank: "🌿 たねまき" }
+    ];
+
     const randomIndex = Math.floor(Math.random() * results.length);
-    document.getElementById("result").innerText = results[randomIndex];
+    const result = results[randomIndex];
+    document.getElementById("result").innerText = `${result.rank} ${result.text}`;
   </script>
 </body>
 </html>

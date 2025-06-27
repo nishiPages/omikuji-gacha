@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>おみくじガチャ</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    .result { font-size: 2em; margin: 30px 0; }
+    button { font-size: 1.2em; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>今日の運勢は…</h1>
+  <p class="result" id="result">？？？</p>
+  <button onclick="location.href='https://www.e-kokusei.go.jp/'">国勢調査に回答する</button>
+
+  <script>
+    const results = [
+      "🎉 大吉！未来が開ける！",
+      "😊 中吉：いい感じの予感！",
+      "😐 小吉：今日は平和に。",
+      "😅 凶：でも大丈夫。あなたの声が未来を変える！"
+    ];
+    document.getElementById("result").innerText =
+      results[Math.floor(Math.random() * results.length)];
+  </script>
+</body>
+</html>
+</details>
